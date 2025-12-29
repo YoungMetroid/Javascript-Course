@@ -1,3 +1,4 @@
+'use strict';
 let globallet = "This is a global variable declared with let";
 let globalvar = "This is a global variable declared with var";
 
@@ -23,8 +24,6 @@ function firstFunction(){
 */
 
 }
-firstFunction();
-
 /*
 console.log("globalLet from inside FirstFunction: " + globallet);
 console.log("globalvar from inside FirstFunction: " + globalvar);
@@ -44,4 +43,48 @@ function secondFunction(){
 
     console.log("numLet from inside SecondFunction: " + numLet);
     console.log("numVar from inside SecondFunction: " + numVar);
+    console.log("NUM_CONST from inside SecondFunction: " + NUM_CONST);
 }
+/*
+secondFunction();
+console.log("numLet from inside SecondFunction: " + numLet);
+console.log("numVar from inside SecondFunction: " + numVar);
+console.log("NUM_CONST from inside SecondFunction: " + NUM_CONST);
+*/
+
+function thirdFunction(){
+
+    numLet = 1000;
+    numVar = 2000;
+    console.log("numLet from inside ThirdFunction: " + numLet);
+    console.log("numVar from inside ThirdFunction: " + numVar);
+}
+/*thirdFunction();
+console.log("numLet: " + numLet);
+console.log("numVar: " + numVar);
+*/
+
+function fourthFunction(){
+
+    console.log("Starting first for loop... ");
+    
+    // When var is delcared its scope extends to the function;
+    // When let is declared its scope is limited to the block.
+    j =2;
+    var j;
+    for (let i = 0; i < 10; i++){
+        console.log(i);
+    }
+    //console.log("Value of i after first for loop: " + i);
+
+    console.log("Starting second for loop... ");
+
+    for (; j < 10; j++){
+        console.log(j);
+    }
+    console.log("Value of j after second for loop: " + j);
+}
+
+fourthFunction();
+
+console.log("Value of j in the global scope: " + j);
