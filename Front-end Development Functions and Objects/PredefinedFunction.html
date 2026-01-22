@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h2> Javascript PredefinedFunctions</h2>
+    <h4 id = "old"> Javascript Predefined Functions</h4>
+    <p id="p1"></p>
+    <input id="carId" type="text" placeholder="Car ID">
+    <button id ="btn">Submit</button>
+    <br><br/>
+    <input id="page" type="text" placeholder="Page Number">
+    <input id="size" type="text" placeholder="Page Size">
+    <button id ="btn2">Get Cars</button>
+    <br><br/>
+    <table id = "table">
+    <thead>
+      <tr>
+        <th>Car Name</th>
+        <th>Company Name</th>
+        <th>Engine</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will go here -->
+    </tbody>
+  </table>
+
+    <script>
+      const table = document.getElementById("table");
+      table.border = "1";
+ 
+      const btn = document.getElementById("btn");
+      btn.addEventListener("click", async () =>{
+          const input = document.getElementById("carId");
+          console.log(input.value);
+          if(input.value != ""){
+            while(table.rows.length > 1){
+                table.deleteRow(1);
+            }
+            const carInfo = await getCarInfo(input.value);
+            const row = table.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
+            cell1.textContent = carInfo.carName;
+            cell2.textContent = carInfo.companyName;
+            cell3.textContent = carInfo.engine;
+
+              
+          }
+      });
+      const btn2 = document.getElementById("btn2");
+      btn2.addEventListener("click", async () =>{
+          const pageNumber = document.getElementById("page").value;
+          const pageSize = document.getElementById("size").value;
+          const pageNumberInt = parseInt(pageNumber);
+          const pageSizeInt = parseInt(pageSize);
+      
+          if(pageSizeInt.value <=0|| pageNumberInt.value <0){
+              alert(`Please enter valid numbers for page and size 
+              and make sure the size is greater than 0 and page number is not negative`);
+              return;
+          }
+            while(table.rows.length > 1){
+                table.deleteRow(1);
+            }
+            const cars = await getCars(pageNumberInt, pageSizeInt);
+            let count = 1;
+            cars.forEach(car =>{ 
+              const row = table.insertRow();
+              const cell1 = row.insertCell(0);
+              const cell2 = row.insertCell(1);
+              const cell3 = row.insertCell(2);
+              const cell4 = row.insertCell(3);
+              cell1.textContent = car.carName;
+              cell2.textContent = car.companyName;
+              cell3.textContent = car.engine;
+              cell4.textContent = count++;
+            });          
+      });
+      
+      /*let p1 = document.getElementById("p1");
+
+      console.log(`Hello\n\tSkillsoft`);
+      console.log(String.raw`Hello\n\tSkillsoft`);
+
+
+        function divByThree(value,idx,args){
+            if(value % 3 === 0) return true;
+        }
+        let nums = [62,151,4,99,11,43];
+        let byThree = nums.some(divByThree);
+        p1.innerHTML += byThree;
+
+        let myDate = new Date();
+        let inSevenDays = new Date();
+        inSevenDays.setDate(myDate.getDate() + 7);
+        p1.innerHTML += `<br/> Today is ${myDate}`;
+        p1.innerHTML += `<br/> In seven days it will be ${inSevenDays.toString().bold()}`;
+
+        //Math Functions
+
+        p1.innerHTML += `<br> 4 is raised to the power of 2 is ${Math.pow(4,2)}`;
+        */
+
+const username = "admin";
+const password = "defaultpassword";
+const credentials = btoa(`${username}:${password}`);
+
+async function getCarInfo(id) {
+    try {
+    const response = await fetch("http://localhost:8080/api/cars?id="+id, {
+      method: "GET",
+      headers: {
+        "Authorization": `Basic ${credentials}`,
+        "Content-Type": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("HTTP error! Status: " + response.status);
+    }
+
+    const data = await response.json();
+    console.log("Car info:", data);
+    return data;
+  } catch (error) {
+    console.error("Fetch error:", error);
+  }
+}
+
+async function getCars(page,size){
+  try {
+    const response = await fetch("http://localhost:8080/api/cars/"+`${page} / ${size}`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Basic ${credentials}`,
+        "Content-Type": "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("HTTP error! Status: " + response.status);
+    }
+
+    const data = await response.json();
+    console.log("Car info:", data);
+    return data;
+  } catch (error) {
+    console.error("Fetch error:", error);
+  }
+}
+//getCars(0,5);
+    </script>
+</body>
+</html>

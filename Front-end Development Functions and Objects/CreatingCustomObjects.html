@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript 101 Object Create</title>
+
+    </head>
+
+    <body>
+        <h3 id = "header3">JavaScript Object Creation and Manipulation</h3>
+        <p id = "p1"></p>
+
+        <script>
+            let p1 = document.getElementById("p1");
+            let vehicle = {
+                make:"Buick",
+                color: "Red",
+                year: 2019,
+                cost: 2500,
+                aboutMe() {
+                    return this.make + " " +
+                    this.color + " " +
+                    this.year;
+                },
+                applyTax(){
+                    return this.cost * 0.08;
+                }
+            };
+
+            p1.innerHTML = `${vehicle.aboutMe()} ${vehicle.applyTax() + vehicle.cost}`;
+        </script>
+    </body>
+
+</html>

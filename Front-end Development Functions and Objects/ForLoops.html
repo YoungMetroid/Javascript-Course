@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript 101 For Loops</title>
+
+    </head>
+
+    <body>
+        <h3 id = "header3">JavaScript Object For Loops</h3>
+        <p id = "p1"></p>
+
+        <script>
+            let p1 = document.getElementById("p1");
+            let vehicle = {
+                make:"Buick",
+                color: "Red",
+                year: 2019,
+                cost: 2500,
+                aboutMe() {
+                    return this.make + " " +
+                    this.color + " " +
+                    this.year;
+                },
+            
+            };
+
+            for(let i =0; i < 3; i++){
+                console.log(i + vehicle.make);
+            }
+            //This loop iterates through the properties of the object including the methods
+            for(let i in vehicle){
+                
+                console.log(i + vehicle[i]);
+            }
+        </script>
+    </body>
+
+</html>

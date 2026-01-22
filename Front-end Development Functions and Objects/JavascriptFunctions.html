@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+
+    <meta charset="utf-8">
+    
+</head>
+
+<body>
+    <h2> Javascript Functions</h2>
+    <h4 id = "old"> Javascript Functions</h4>
+    <p id="p1"></p>
+    <script>
+
+        var p1 = document.getElementById("p1");
+        //Anonymous function assigned to a variable
+
+       /* function finalPrice(price, pcMarkup, ...args){
+           // console.log("args length: " + args.length);
+           // console.log("arguments of function length: " + arguments.length);
+           // console.log("args[0]: " + args[0]);
+            let markup = price * (pcMarkup / 100);
+            p1.innerHTML += `At a markup of ${pcMarkup}"
+            " the final price is ${price + markup}" <br/>`;
+            if(pcMarkup > 1){
+                return finalPrice(price, pcMarkup-1);
+            }
+        }
+        //Arrow function
+        var secondFinalPrice = (price,pcMarkup) =>{
+            return (price * (pcMarkup / 100)) + price;
+        }
+        //Function assigned to a variable
+        var pc = finalPrice;
+
+        var af = function(){
+            console.log("Anonymous function called");
+        }
+        af();
+        pc(200,15);
+        finalPrice(100,10,"extra");
+        /*
+        p1.innerHTML += "<br> Final price is " + pc;
+        p1.innerHTML += "<br> Second final price is " + secondFinalPrice(2.85,15);
+   
+
+        function scopeTest(){
+            var score = 10;  
+        }
+        scopeTest();
+       // p1.innerHTML +=
+       // "Score is " + score + "<br>/";
+
+        function orderNumbers(a,b){
+            return a-b;
+        }
+        let secondArrowFunction  = (a,b) =>{
+            if(orderNumbers(a,b) > 0){
+                return new Array(b,a);
+            }
+            else return new Array(a,b);
+        }
+        console.log(secondArrowFunction(10,5));
+       //Bubble Sort
+        function swap(array,a,b){
+                let temp = array[a];
+                array[a] = array[b];
+                array[b] = temp;
+        }
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        
+        
+        let array = new Array(5,3,8,1,4);
+        async function runLoop(){
+            for(let i=0; i<array.length-1; i++){
+                for(let j=0; j < array.length-1-i; j++){
+                    if(array[j] > array[j+1]){
+                        swap(array,j,j+1);
+                        p1.innerHTML = array.join(", ");
+                        await sleep(1000);
+                    }
+                }
+            }
+        }
+        runLoop();
+        console.log("Sorted array: " + array);
+        */
+
+        const markUp = 20;
+
+        // Arrow function with implicit return
+        let finalPrice = x => x * (markUp/100) + x;
+        let secondPrice = x => {return x * (markUp/100) + x;};
+        let thirdPrice = (x,y) => {return x * (y/100) + x;};
+        p1.innerHTML += `Final price is ${finalPrice(100)}`;
+        p1.innerHTML += `<br> Second price is ${secondPrice(200)}`;
+        p1.innerHTML += `<br> Third price is ${thirdPrice(100,15)}`;
+
+    </script>
+</body>
+</html>
