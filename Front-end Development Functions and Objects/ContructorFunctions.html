@@ -4,12 +4,12 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Javascript 101 For Loops</title>
+        <title>Javascript 101 Contructor Functions</title>
 
     </head>
 
     <body>
-        <h3 id = "header3">JavaScript Object For Loops</h3>
+        <h3 id = "header3">JavaScript Contructor Functions</h3>
         <p id = "p1"></p>
 
         <script>
@@ -21,17 +21,18 @@
                 cost: 2500,
             };
              function Vehicle(make,color,year)  {
-                this.make;
+                this.make = make;
                 this.color = color;
                 this.year = year;
             };
             let myRide = new Vehicle("Ford","Blue",2020);
             console.log(myRide);
 
-            p1.innerHTML = `My current car is a ${vehicle.make} 
+            p1.innerHTML = `My current car is a ${myRide.make} 
             ${vehicle.color} from ${vehicle.year}.`;
 
-             let mide = new Vehicle("Ford","Blue",2020);
+            let myFuturRide = new Vehicle("Mazda","Grey",2025);
+            p1.innerHTML += `<br> My future car is a ${myFuturRide.make} `;
             //
             let secondRide = vehicle;
             secondRide.make = "Chevy";

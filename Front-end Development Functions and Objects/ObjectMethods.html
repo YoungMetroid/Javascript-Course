@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript 101 Contructor</title>
+
+    </head>
+
+    <body>
+        <h3 id = "header3">JavaScript Object Methods</h3>
+        <p id = "p1"></p>
+
+        <script>
+           let p1 = document.getElementById("p1");
+           function Vehicle(make, color, year){
+                this.make = make;
+                this.color = color;
+                this.year = year;
+                let ll = 0;
+                this.getLL = function(){
+                    return ll;
+                }
+                this.setLL = function(num){
+                    ll = num;
+                }
+           }
+            
+           let v = new Vehicle("Honda","Black",2021);
+           console.log(v.getLL());
+           v.setLL(50);
+           console.log(v.getLL());
+           v.l = 100;
+           v.l = 200;
+           console.log(v);
+        </script>
+    </body>
+
+</html>
