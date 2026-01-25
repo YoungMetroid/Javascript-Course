@@ -31,9 +31,22 @@
            console.log(v.getLL());
            v.setLL(50);
            console.log(v.getLL());
-           v.l = 100;
-           v.l = 200;
+           Vehicle.motor = "V6";
+           console.log(Vehicle.motor);
+           console.log(v.constructor.motor);
+           v.motor = "V8";
+           console.log(v.motor);
+           console.log(v.constructor.motor);
+           Vehicle.prototype.motor;
+           let v2 = new Vehicle("Toyota","White",2022);
+           v2.motor = "V4";
+           Vehicle.prototype.motor = "330";
+           Vehicle.prototype.motor = "V16";
+           v2.motor = "V1";
+           console.log(v2);
            console.log(v);
+    
+    
         </script>
     </body>
 
