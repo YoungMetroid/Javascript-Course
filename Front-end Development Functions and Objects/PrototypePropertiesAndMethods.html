@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript Prototype Properties and Methods</title>
+
+    </head>
+
+    <body>
+        <h3 id = "header3">JavaScript Prototype Properties and Methods</h3>
+        <p id = "p1"></p>
+
+        <script>
+            let p1 = document.getElementById("p1");
+            function Vehicle(make, color, year, cost){
+                    this.make = make;
+                    this.color = color;
+                    this.year = year;
+                    this.cost = cost;
+                    this.carDetails = function(){
+                        return `This ${this.year} ${this.make} will cost ${this.cost}. `;
+                    }
+            }
+
+            let myRide = new Vehicle("Honda","Black",2021,"25000");
+            p1.innerHTML = myRide.carDetails();
+            //
+            //Vehicle.model;
+            myRide.model = 'Explorer';
+            console.log(myRide);
+            
+            console.log("Vehicle.model: " + Vehicle.model);
+
+          
+            let myRide2 = new Vehicle("Toyota","White",2022,"30000");
+        
+            Vehicle.constructor.model = 'Mustang';
+            myRide2.model = 'Highlander';
+            console.log(myRide2);
+            myRide2.constructor.model = 'Camry';
+            console.log("myRide2.constructor.model: " + myRide2.constructor.model);
+            console.log("Vehicle.model: " + Vehicle.model);
+            console.log("Vehicle.constructor.model: " + Vehicle.constructor.model);
+            console.log("myRide2.model: " + myRide2.model);
+            Vehicle.prototype.model = 'Civic';
+
+            myRide2.constructor.model = 'Accord';
+            console.log("myRide2.constructor.model: " + myRide2.constructor.model);
+            console.log("Vehicle.model: " + Vehicle.model);
+            console.log(myRide2);
+
+            console.log(Function.model);
+
+            Vehicle.prototype.getMSRP = function(){
+                return `The MSRP on this ${this.model}
+                is ${this.cost * .9} .`;
+            }
+            
+         
+
+       
+
+            
+          
+    
+        </script>
+    </body>
+
+</html>

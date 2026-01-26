@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript Inheritance and Extending Classes</title>
+
+    </head>
+
+    <body>
+        <h3 id = "header3">JavaScript Inheritance and Extending Classes</h3>
+        <p id = "p1"></p>
+
+        <script>
+            let p1 = document.getElementById("p1");
+            function Vehicle(make, color, year, cost){
+                    this.make = make;
+                    this.color = color;
+                    this.year = year;
+                    this.cost = cost;
+                    this.carDetails = function(){
+                        return `This ${this.year} ${this.make} will cost ${this.cost}. `;
+                    }
+            }
+            let myRide = new Vehicle('Ford','Blue',2020,28000);
+            p1.innerHTML = myRide.carDetails();
+
+            function SUV(size, passengers){
+                this.size = size;
+                this.passengers = passengers;
+                
+            }
+            SUV.prototype = new Vehicle();
+            let explorer = new SUV('Large', 8);
+            explorer.make = 'Ford';
+            explorer.color = 'Red';
+            explorer.year = 2021;
+            explorer.cost = 50000;
+
+            console.log(explorer);
+            console.log(explorer.carDetails());
+
+       
+
+            
+          
+    
+        </script>
+    </body>
+
+</html>

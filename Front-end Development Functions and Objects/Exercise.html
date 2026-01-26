@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript Exercise</title>
+
+    </head>
+
+    <body>
+        <h3 id = "header3">JavaScript Exercise</h3>
+        <p id = "p1"></p>
+
+        <script>
+           
+            function Employee(firstName, lastName,salary){
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.salary = salary;
+
+                this.getFullName = function(){
+                    return `${this.firstName} ${this.lastName}`;
+                }
+
+            }
+            
+            let emp = new Employee('John','Doe',60000);
+            Employee.prototype.getEmployeeDetails = function(){
+                return `Employee Name: ${this.getFullName()} \nwith a salary of ${this.salary} .`;
+            }
+
+            console.log(emp.getEmployeeDetails());
+
+            let emp2 = new Employee('Jane','Smith',75000);
+            console.log(emp2.getEmployeeDetails());
+            console.log(emp2);
+            
+       
+
+            
+          
+    
+        </script>
+    </body>
+
+</html>
