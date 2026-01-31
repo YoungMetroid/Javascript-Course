@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript Regular Expressions</title>
+       
+    </head>
+
+    <body>
+        <h3 id = "header3">Javascript Regular Expressions</h3>
+        <p id = "p1">This is a paragraph</p>
+
+        <p id = "p2"></p>
+       
+        <script>
+            let ss = 'Percipio by Skillsoft';
+            let found = ss.search(/y/);
+            if(found != -1){
+                p1.innerHTML = 'Found : )' + found;
+            } else {
+                p1.innerHTML = 'Not Found :(';
+            }
+         
+            let searchWithMatch = ss.match(/s/ig);
+            let searchTerm = /by/;
+            let foundMatch = searchTerm.test(ss);
+            console.log(searchTerm.exec(ss));
+
+            console.log(foundMatch);
+            console.log("Length: " + searchWithMatch.length);
+            for(let i = 0; i < searchWithMatch.length; i++){
+                p2.innerHTML += searchWithMatch[i] + "<br>";
+            }
+
+            let secondSearchTerm = new RegExp('by');
+            let secondFoundMath = secondSearchTerm.exec(ss);
+            console.log(secondFoundMath[0]);
+        </script>
+
+
+    </body>
+
+</html>

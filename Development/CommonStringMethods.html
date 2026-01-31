@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript Common String Methods </title>
+    </head>
+
+    <body>
+        <h3 id = "header3">Javascript Common String Methods</h3>
+        <p id = "p1">This is a paragraph</p>
+
+        <p id = "p2"></p>
+        <button id = "b" onclick="updateString()">Click Me</button>
+        <script>
+
+            let p1 = document.getElementById("p1");
+            let p2 = document.getElementById("p2");
+            let i = 10;
+            let s = 'Felipe is learning from precipio by Skillsoft';
+            p1.innerHTML = s;
+
+            
+            function updateString(){
+                p1.innerHTML += (" "+s.substring(0,i--).toUpperCase()).replace("FELIPE", "Ansony");
+                console.log(i);
+            }
+
+        </script>
+
+
+    </body>
+
+</html>
