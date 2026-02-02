@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript Prototype Properties and Methods</title>
+
+    </head>
+
+    <body>
+        <h3 id = "header3">JavaScript Prototype Properties and Methods</h3>
+        <p id = "p1"></p>
+
+        <script>
+            let p1 = document.getElementById("p1");
+            function Vehicle(make, color,cost, year){
+                this.make = make;
+                this.color = color;
+                this.cost = cost;
+                this.year = year;
+
+                this.carDetails = function(){
+                    return `The ${this.year} ${this.make} will cost ${this.cost}`;
+                };
+            }
+           
+            let myRide = new Vehicle("Toyota","Red",25000,2024);
+            p1.innerHTML = myRide.carDetails() + "<br/>";
+            p1.innerHTML += "Adding prototype property and method<br/>";
+            //Here i added a property to the object but not the constructor function
+            myRide.motor = "V6";
+            myRide.carDetails = function(){
+            return `The ${this.year} ${this.make} with a ${this.motor} engine will cost ${this.cost}`;
+           }
+            p1.innerHTML += myRide.carDetails() + "<br/>";
+            let mySecondRide = new Vehicle("Toyota","Red",25000,2024);
+            console.log(myRide);
+            console.log(mySecondRide);
+            
+            Vehicle.motor = "V8";
+            Vehicle.carDetails = function(){
+                return `The ${this.year} ${this.make} with a ${this.motor} engine will cost ${this.cost}`;
+            }
+
+            let myThirdRide = new Vehicle("Toyota","Red",25000,2024);
+            console.log("myThirdRide: This should have the motor property but empty", myThirdRide);
+            console.log(myThirdRide.constructor.carDetails());
+            console.log(Vehicle.carDetails());
+            
+        </script>
+    </body>
+
+</html>
