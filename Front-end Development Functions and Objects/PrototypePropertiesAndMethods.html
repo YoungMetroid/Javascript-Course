@@ -14,40 +14,57 @@
 
         <script>
             let p1 = document.getElementById("p1");
-            function Vehicle(make, color,cost, year){
-                this.make = make;
-                this.color = color;
-                this.cost = cost;
-                this.year = year;
-
-                this.carDetails = function(){
-                    return `The ${this.year} ${this.make} will cost ${this.cost}`;
-                };
+            function Vehicle(make, color, year, cost){
+                    this.make = make;
+                    this.color = color;
+                    this.year = year;
+                    this.cost = cost;
+                    this.carDetails = function(){
+                        return `This ${this.year} ${this.make} will cost ${this.cost}. `;
+                    }
             }
-           
-            let myRide = new Vehicle("Toyota","Red",25000,2024);
-            p1.innerHTML = myRide.carDetails() + "<br/>";
-            p1.innerHTML += "Adding prototype property and method<br/>";
-            //Here i added a property to the object but not the constructor function
-            myRide.motor = "V6";
-            myRide.carDetails = function(){
-            return `The ${this.year} ${this.make} with a ${this.motor} engine will cost ${this.cost}`;
-           }
-            p1.innerHTML += myRide.carDetails() + "<br/>";
-            let mySecondRide = new Vehicle("Toyota","Red",25000,2024);
+
+            let myRide = new Vehicle("Honda","Black",2021,"25000");
+            p1.innerHTML = myRide.carDetails();
+            //
+            //Vehicle.model;
+            myRide.model = 'Explorer';
             console.log(myRide);
-            console.log(mySecondRide);
             
-            Vehicle.motor = "V8";
-            Vehicle.carDetails = function(){
-                return `The ${this.year} ${this.make} with a ${this.motor} engine will cost ${this.cost}`;
-            }
+            console.log("Vehicle.model: " + Vehicle.model);
 
-            let myThirdRide = new Vehicle("Toyota","Red",25000,2024);
-            console.log("myThirdRide: This should have the motor property but empty", myThirdRide);
-            console.log(myThirdRide.constructor.carDetails());
-            console.log(Vehicle.carDetails());
+          
+            let myRide2 = new Vehicle("Toyota","White",2022,"30000");
+        
+            Vehicle.constructor.model = 'Mustang';
+            myRide2.model = 'Highlander';
+            console.log(myRide2);
+            myRide2.constructor.model = 'Camry';
+            console.log("myRide2.constructor.model: " + myRide2.constructor.model);
+            console.log("Vehicle.model: " + Vehicle.model);
+            console.log("Vehicle.constructor.model: " + Vehicle.constructor.model);
+            console.log("myRide2.model: " + myRide2.model);
+            Vehicle.prototype.model = 'Civic';
+
+            myRide2.constructor.model = 'Accord';
+            console.log("myRide2.constructor.model: " + myRide2.constructor.model);
+            console.log("Vehicle.model: " + Vehicle.model);
+            console.log(myRide2);
+
+            console.log(Function.model);
+
+            Vehicle.prototype.getMSRP = function(){
+                return `The MSRP on this ${this.model}
+                is ${this.cost * .9} .`;
+            }
             
+         
+
+       
+
+            
+          
+    
         </script>
     </body>
 
