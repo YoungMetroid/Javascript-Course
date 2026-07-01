@@ -14,20 +14,28 @@
 
         <script>
            let p1 = document.getElementById("p1");
-           function Vehicle(make, color, year){
+           function Vehicle(make, color,cost, year){
                 this.make = make;
                 this.color = color;
+                this.cost = cost;
                 this.year = year;
+
+                //This is the closure part
                 let ll = 0;
+                
                 this.getLL = function(){
                     return ll;
                 }
                 this.setLL = function(num){
                     ll = num;
                 }
+                this.carDetails = function(){
+                    return `The ${this.year} ${this.make} will cost ${this.cost}`;
+                };
            }
             
-           let v = new Vehicle("Honda","Black",2021);
+           let v = new Vehicle("Honda","Black",20000,2026);
+           p1.innerHTML = v.carDetails() + "<br/>";
            console.log(v.getLL());
            v.setLL(50);
            console.log(v.getLL());
