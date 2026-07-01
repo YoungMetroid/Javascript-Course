@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Javascript Math Object</title>
+       <script src="https://cdn.jsdelivr.net/npm/financejs@latest/finance.min.js"></script>
+
+    </head>
+
+    <body>
+        <h3 id = "header3">Javascript Math Object</h3>
+        <p id = "p1"></p>  
+        <script>
+          
+            let finance = new Finance();
+            let p1 = document.getElementById('p1');
+            let num = Math.random() * 10;
+            p1.innerHTML = `${Math.sqrt(49)} <br/>
+                ${Math.PI}<br/> \
+                ${Math.floor(num)} <br/>
+                ${Number.parseInt(num)} <br/>`;
+            p1.innerHTML += `${finance.FV(0.08, 2000, 36)}`;
+                
+        </script>
+
+
+    </body>
+
+</html>

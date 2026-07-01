@@ -21,12 +21,15 @@ let priceList = items.map(function(item){
     return item.price;  
 });
 
+let priceListUsingArrowFunction = items.map(item => item.price);
+
 
 let filterMapThenSum = items.filter(item => item.price > 20).map(item => item.price+10).reduce((sum, price) => sum + price, 0);
 console.log("Filtered, Mapped and Summed : " + filterMapThenSum);
 
 
 console.log("Price list using map function : " + priceList);
+console.log("Price list using map function with arrow function : " + priceListUsingArrowFunction);
 
 
 //sum is the accumulator and the item if the current item in the array.
